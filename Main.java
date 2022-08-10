@@ -27,9 +27,10 @@ public class Main {
 
     private static void playerTurn(Board b, int p) {
         String movePiece = choosePiece(b,p);
-        String moveWhere = movePiece(b,p);
         int initialY =  movePiece.charAt(0) - 'a';
         int initialX = Integer.parseInt(movePiece.substring(1));
+
+        String moveWhere = movePiece(b,p,initialX,initialY);
         int endY = moveWhere.charAt(0) - 'a';
         int endX = Integer.parseInt(moveWhere.substring(1));
 
@@ -43,15 +44,15 @@ public class Main {
         }
     } 
 
-    private static String movePiece(Board b, int p) {
+    private static String movePiece(Board b, int p, int initialX, int initialY) {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Where would you like to move it to?");
         String moveWhere = myObj.nextLine();
         int endY = moveWhere.charAt(0) - 'a';
         int endX = Integer.parseInt(moveWhere.substring(1));
-        if(b.arr[endX][endY].player == p) {
+        if(b.arr[endX][endY].player == p && (b.arr[endX][endY].name != " r " && b.arr[initialX][initialY].name != " K ")) {
             System.out.println("You have a piece at that location!\n Choose a new place to move to");
-            return movePiece(b, p);
+            return movePiece(b, p,initialX, initialY);
         }
         else return moveWhere;
     }

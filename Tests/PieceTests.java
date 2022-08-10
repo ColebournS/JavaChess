@@ -71,7 +71,11 @@ public class PieceTests {
        assertEquals(r.isMoveValid(0, 0, 7, 7, b),false);
        assertEquals(r.isMoveValid(0, 0, 4, 2, b),false);
        assertEquals(r.isMoveValid(4, 1, 4, 2, b),true);
- 
+       //Castling 
+       assertEquals(r.isMoveValid(3, 0, 5, 0, b),true);
+       assertEquals(r.isMoveValid(3, 0, 1, 0, b),true);
+       assertEquals(r.isMoveValid(3, 7, 5, 7, b),true);
+       assertEquals(r.isMoveValid(3, 7, 1, 7, b),true);
     }
 
     @Test
