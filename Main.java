@@ -28,10 +28,10 @@ public class Main {
     private static void playerTurn(Board b, int p) {
         String movePiece = choosePiece(b,p);
         String moveWhere = movePiece(b,p);
-        int initialX = Integer.parseInt(movePiece.substring(1,2));
-        int initialY = Integer.parseInt(movePiece.substring(3,4));
-        int endX = Integer.parseInt(moveWhere.substring(1,2));
-        int endY = Integer.parseInt(moveWhere.substring(3,4));
+        int initialY =  movePiece.charAt(0) - 'a';
+        int initialX = Integer.parseInt(movePiece.substring(1));
+        int endY = moveWhere.charAt(0) - 'a';
+        int endX = Integer.parseInt(moveWhere.substring(1));
 
         if(b.arr[initialX][initialY].isMoveValid(initialX, initialY, endX, endY, b)) {
             b.movePiece(movePiece,moveWhere);
@@ -47,8 +47,9 @@ public class Main {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Where would you like to move it to?");
         String moveWhere = myObj.nextLine();
-        int endX = Integer.parseInt(moveWhere.substring(1,2));
-        int endY = Integer.parseInt(moveWhere.substring(3,4));
+        myObj.close();
+        int endY = moveWhere.charAt(0) - 'a';
+        int endX = Integer.parseInt(moveWhere.substring(1));
         if(b.arr[endX][endY].player == p) {
             System.out.println("You have a piece at that location!\n Choose a new place to move to");
             return movePiece(b, p);
@@ -58,10 +59,11 @@ public class Main {
 
     private static String choosePiece(Board b, int p) {
         Scanner myObj = new Scanner(System.in);
-        System.out.println("Player " + p + "'s Turn:\nWhich Piece would you like to move[X,Y]?");
+        System.out.println("Player " + p + "'s Turn:\nWhich Piece would you like to move?");
         String movePiece = myObj.nextLine();
-        int initialX = Integer.parseInt(movePiece.substring(1,2));
-        int initialY = Integer.parseInt(movePiece.substring(3,4));
+        myObj.close();
+        int initialY = movePiece.charAt(0) - 'a';
+        int initialX = Integer.parseInt(movePiece.substring(1));
         if(b.arr[initialX][initialY].player != p){
             System.out.println("That is not your piece!\n Please Choose Again");
             return choosePiece(b,p);

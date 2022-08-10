@@ -54,7 +54,7 @@ public class Board {
         final String ANSI_RESET = "\u001B[0m";
         final String ANSI_WHITE_BACKGROUND  = "\u001B[47m";
         String printString;
-        System.out.println("     0     1     2     3     4     5     6     7");
+        System.out.println("     A     B     C     D     E     F     G     H");
         for(int i= 0; i <8; i++){
             System.out.print(i + " ");
             for(int j= 0; j <8; j++){
@@ -78,10 +78,10 @@ public class Board {
     }
 
     public void movePiece(String movePiece, String moveWhere) {
-        int initialX = Integer.parseInt(movePiece.substring(1,2));
-        int initialY = Integer.parseInt(movePiece.substring(3,4));
-        int endX = Integer.parseInt(moveWhere.substring(1,2));
-        int endY = Integer.parseInt(moveWhere.substring(3,4));
+        int initialY =  movePiece.charAt(0) - 'a';
+        int initialX = Integer.parseInt(movePiece.substring(1));
+        int endY = moveWhere.charAt(0) - 'a';
+        int endX = Integer.parseInt(moveWhere.substring(1));
         
         arr[endX][endY] = arr[initialX][initialY];
         arr[endX][endY].newColor(getColor(endX, endY));
