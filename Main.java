@@ -15,7 +15,12 @@ public class Main {
             b.printBoard();
             System.out.println("Welcome to new chess Game!\n Would you like to be Black[2] or White[1]?");
             int player = myObj.nextInt();
-            while(true) playerTurn(b, player);
+            while(true) {
+                playerTurn(b, player);
+                if(player == 1) playerTurn(b, 2);
+                else playerTurn(b, 1);
+            }
+
         }
     }
 
@@ -53,7 +58,7 @@ public class Main {
 
     private static String choosePiece(Board b, int p) {
         Scanner myObj = new Scanner(System.in);
-        System.out.println("Which Piece would you like to move[X,Y]?");
+        System.out.println("Player " + p + "'s Turn:\nWhich Piece would you like to move[X,Y]?");
         String movePiece = myObj.nextLine();
         int initialX = Integer.parseInt(movePiece.substring(1,2));
         int initialY = Integer.parseInt(movePiece.substring(3,4));

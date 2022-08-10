@@ -22,6 +22,9 @@ public class PieceTests {
       assertEquals(p.isMoveValid(4, 4, 3, 4, b),false);
       assertEquals(p.isMoveValid(4, 4, 3, 3, b),false);
       assertEquals(p.isMoveValid(4, 4, 5, 5, b),false);
+      Pawn p2 = new Pawn(2, true);
+      assertEquals(p2.isMoveValid(6, 0, 5, 0, b),true);
+      assertEquals(p2.isMoveValid(6, 0, 4, 0, b),true);
    }
 
    @Test

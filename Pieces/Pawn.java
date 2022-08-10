@@ -18,7 +18,7 @@ public class Pawn extends Piece{
             }
             //else pawn should be moving up
             else{
-                if(endX == initialX -1) return true;
+                if(endX == initialX -1 || ( initialX == 6 && initialX == endX + 2) ) return true;
             }
 
         }
