@@ -47,7 +47,6 @@ public class Main {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Where would you like to move it to?");
         String moveWhere = myObj.nextLine();
-        myObj.close();
         int endY = moveWhere.charAt(0) - 'a';
         int endX = Integer.parseInt(moveWhere.substring(1));
         if(b.arr[endX][endY].player == p) {
@@ -61,7 +60,6 @@ public class Main {
         Scanner myObj = new Scanner(System.in);
         System.out.println("Player " + p + "'s Turn:\nWhich Piece would you like to move?");
         String movePiece = myObj.nextLine();
-        myObj.close();
         int initialY = movePiece.charAt(0) - 'a';
         int initialX = Integer.parseInt(movePiece.substring(1));
         if(b.arr[initialX][initialY].player != p){
